@@ -1,0 +1,314 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-brown: #4b3025;
+  --brown: #795548;
+  --medium-brown: #9a7561;
+  --beige: #f5eee3;
+  --light-beige: #fffaf2;
+  --cream: #e9dcc9;
+  --text: #49372e;
+  --muted: #89776b;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--beige);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(194, 161, 138, 0.22),
+      transparent 35%
+    ),
+    var(--beige);
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  background: var(--dark-brown);
+  padding: 24px 7%;
+  box-shadow: 0 4px 20px rgba(75, 48, 37, 0.15);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: var(--cream);
+  font-size: 15px;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 2px;
+  background: #d7b99c;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ---------- PAGE CONTAINER ---------- */
+.page-container {
+  max-width: 950px;
+  margin: 55px auto;
+  padding: 40px;
+  background: rgba(255, 250, 242, 0.9);
+  border: 1px solid rgba(121, 85, 72, 0.12);
+  border-radius: 22px;
+  box-shadow: 0 12px 35px rgba(75, 48, 37, 0.07);
+  animation: pageEnter 0.65s ease both;
+}
+
+.page-container h2 {
+  color: var(--dark-brown);
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.page-container h2::after {
+  content: "";
+  display: block;
+  width: 55px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 10px;
+  background: var(--medium-brown);
+}
+
+/* ---------- STUDENT CARDS ---------- */
+.student-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.student-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 22px;
+  background: white;
+  border: 1px solid #eee2d3;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(75, 48, 37, 0.035);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  animation: cardEnter 0.5s ease both;
+}
+
+.student-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.student-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.student-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.student-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.student-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.student-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(75, 48, 37, 0.09);
+  border-color: #c8a78f;
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.student-info span {
+  color: var(--dark-brown);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.student-info small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ---------- BUTTONS ---------- */
+button {
+  border: none;
+  border-radius: 9px;
+  padding: 11px 17px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.add-button {
+  background: var(--dark-brown);
+  color: var(--light-beige);
+}
+
+.add-button:hover:not(:disabled) {
+  background: var(--brown);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(75, 48, 37, 0.18);
+}
+
+.add-button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.add-button:disabled {
+  background: #b7a396;
+  color: white;
+  cursor: not-allowed;
+}
+
+.remove-button {
+  background: #a65e48;
+  color: white;
+}
+
+.remove-button:hover {
+  background: #854531;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(133, 69, 49, 0.18);
+}
+
+.remove-button:active {
+  transform: scale(0.96);
+}
+
+/* ---------- EMPTY FAVOURITES ---------- */
+.empty-message {
+  padding: 35px 20px;
+  text-align: center;
+  color: var(--muted);
+  background: #f8f0e5;
+  border: 1px dashed #c8ad96;
+  border-radius: 14px;
+  animation: fadeIn 0.6s ease both;
+}
+
+.empty-message::before {
+  content: "♡";
+  display: block;
+  font-size: 35px;
+  color: var(--medium-brown);
+  margin-bottom: 12px;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- MOBILE RESPONSIVENESS ---------- */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 22px;
+  }
+
+  .nav-links {
+    gap: 22px;
+  }
+
+  .page-container {
+    margin: 25px 14px;
+    padding: 22px 16px;
+    border-radius: 16px;
+  }
+
+  .page-container h2 {
+    font-size: 23px;
+  }
+
+  .student-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
