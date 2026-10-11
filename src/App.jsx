@@ -7,7 +7,7 @@ import { StudentProvider } from "./context/StudentContext";
 function App() {
   return (
     <StudentProvider>
-      <BrowserRouter basename="/favourite-student-list">
+      <BrowserRouter>
         <div className="app">
           <Navbar />
 
